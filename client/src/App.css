@@ -1,0 +1,19 @@
+/* Ensure the full height for all parent containers */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .App {
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    font-family: sans-serif;
+  }
+  
