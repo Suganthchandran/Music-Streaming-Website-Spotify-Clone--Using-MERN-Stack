@@ -1,4 +1,3 @@
-/* Ensure the full height for all parent containers */
 html, body, #root {
     height: 100%;
     margin: 0;

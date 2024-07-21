@@ -1,0 +1,87 @@
+.navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-arrow{
+    display: flex;
+    align-items: center;
+    gap:10%;
+    margin-top: 0;
+}
+
+.navbar-arrow-image{
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: black;
+    padding: 0.5rem;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.navbar-content{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-premium-butt{
+    background-color: white;
+    color: black;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-install-app{
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-profile{
+    background-color: gold;
+    color: black;
+    border-radius: 9999px;
+    width: 1.7rem;
+    height: 1.7rem;
+    font-weight: bolder;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-type{
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 0.2rem;
+    font-size: 12px;
+}
+
+.navbar-type-all{
+    background-color: white;
+    color:black;
+    padding: 0.25rem 0.5rem ;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.navbar-type-list{
+    background-color: black;
+    color:white;
+    padding: 0.25rem 0.75rem ;
+    border-radius: 16px;
+    cursor: pointer;
+}

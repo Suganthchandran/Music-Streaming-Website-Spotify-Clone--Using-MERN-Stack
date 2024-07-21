@@ -1,8 +1,9 @@
 /* Sidebar styles */
 .sidebar {
   width: 25%;
-  height: 100%;
+  min-height: 100%;
   padding: 0.5rem;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -12,40 +13,41 @@
 
 .sidebar-element1 {
   background-color: #121212;
-  flex: 0 0 auto; /* Do not grow or shrink */
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   border-radius: 4px;
-  padding: 10px; /* Add padding to see the boundaries clearly */
+  padding: 10px;
 }
 
 .sidebar-content1 {
   color: white;
   display: flex;
   align-items: center;
-  padding-left: 8%;
-  gap: 3%;
+  padding-left: 4%;
+  gap: 6%;
   cursor: pointer;
 }
 
 .sidebar-image1 {
-  width: 6%;
+  width: 7.3%;
 }
 
 .sidebar-text1 {
   color: white;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.87rem;
 }
 
 .sidebar-element2 {
   background-color: #121212;
-  flex: 1 1 auto; /* Grow to fill remaining space */
+  flex: 1 1 auto; 
+  min-height: 85%;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Align items at the start */
+  justify-content: flex-start; 
 }
 
 .sidebar-element2-5 {
@@ -56,19 +58,70 @@
 }
 
 .sidebar-content2 {
-  gap: 6%;
+  gap: 10%;
+  padding-left: 3.8%;
   display: flex;
   align-items: center;
 }
 
+.sidebar-content2-5{
+  gap: 20%;
+  padding-left: 3.8%;
+  display: flex;
+  align-items: center;
+  margin-right: -15%;
+}
+
 .sidebar-image2 {
-  width: 17%;
+  width: 18%;
 }
 
 .sidebar-text2 {
   color: white;
-  font-weight: lighter;
+  font-weight: bold;
   font-size: 0.8rem;
+}
+
+.sidebar-playlist{
+  padding: 3%;
+  margin: 0.5rem;
+  background-color: #242424;
+  font-weight: bold;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 0;
+  padding-left: 1rem;
+}
+
+.sidebar-playlist-butt{
+  background-color: white;
+  color: black;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 3% 4%;
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar-playlist-h1{
+  font-size: 0.7rem;
+  margin-bottom: 0;
+  margin-top: 4px;
+}
+
+.sidebar-playlist-p{
+  font-size: 0.64rem;
+  margin-top: 1;
+  font-weight: 100;
+  color: rgb(225, 230, 230);
+  margin-bottom: 0;
+
 }
 
 @media (min-width: 1024px) {

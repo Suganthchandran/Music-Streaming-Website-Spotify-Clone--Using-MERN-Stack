@@ -21,10 +21,20 @@ export const Sidebar = () => {
                     <img className='sidebar-image2' src={assets.stack_icon} alt=''/>
                     <h1 className='sidebar-text2'>Your Library</h1>
                 </div>
-                <div className='sidebar-content2'>
-                <img style={{width:'15%'}} src={assets.arrow_icon} alt=''/>
+                <div className='sidebar-content2-5'>
                 <img style={{width:'15%'}} src={assets.plus_icon} alt=''/>
+                <img style={{width:'15%'}} src={assets.arrow_icon} alt=''/>
                 </div>
+            </div>
+            <div className='sidebar-playlist'>
+                <h1 className='sidebar-playlist-h1'>Create your first playlist</h1>
+                <p className='sidebar-playlist-p'>It's easy we will help you</p>
+                <button className='sidebar-playlist-butt'>Create Playlist</button>
+            </div>
+            <div className='sidebar-playlist' style={{marginTop:'4px'}}>
+                <h1 className='sidebar-playlist-h1'>Let's find some podcasts to follow</h1>
+                <p className='sidebar-playlist-p'>We will keep you update on new episodes</p>
+                <button className='sidebar-playlist-butt'>Browse podcasts</button>
             </div>
         </div>
     </div>
