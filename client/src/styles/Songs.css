@@ -1,0 +1,32 @@
+.song-main{
+    min-width: 110px;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-right: 0.7rem;
+    border: none;
+}
+
+.song-main:hover{
+    background-color: #ffffff26;
+}
+
+.song-image{
+    border-radius: 4px;
+    max-width: 95%;
+}
+
+.song-name{
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    font-size: 0.75rem;
+}
+
+/* .song-desc{
+    color: whitesmoke;
+    font-size: 14px;
+    font-size: 0.63rem;
+    font-weight: 100;
+} */
+

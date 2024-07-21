@@ -1,5 +1,36 @@
 .home-main{
+    margin-bottom: 3rem;
+}
+
+.home-album-heading{
     margin: 1rem 0;
     font-weight: bold;
     font-size: 1.5rem;
+}
+
+.albumss{
+    display : flex;
+    overflow: auto;
+}
+
+/* To Hide the Scroll bar */
+.albumss::-webkit-scrollbar {
+    display: none; 
+}
+
+
+.home-song-heading{
+    margin: 1rem 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.songss{
+    display : flex;
+    overflow: auto;
+}
+
+/* To Hide the Scroll bar */
+.songss::-webkit-scrollbar {
+    display: none; 
 }
