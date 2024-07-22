@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './App.css';
 import { Sidebar } from './components/Sidebar';
 import { Player } from './components/Player';
 import { Display } from './pages/Display';
+import { PlayerContext } from './pages/PlayerContext';
 
 function App() {
+
+  const {audioRef,track} = useContext(PlayerContext);
+
   return (
     <div className="App">
       <div className='main-content'>
@@ -12,7 +16,7 @@ function App() {
         <Display/>
       </div>
       <Player/>
-      <audio preload='auto'></audio>
+      <audio ref={audioRef} src={track.file} preload='auto'></audio>
     </div>
   );
 }
