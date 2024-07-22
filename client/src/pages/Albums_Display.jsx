@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/Albums_Display.css';
 import { albumsData, assets, songsData } from '../assets/frontend-assets/assets';
 import { Navbar } from '../components/Navbar';
 import { useParams } from 'react-router-dom';
+import { PlayerContext } from './PlayerContext';
 
 export const Albums_Display = () => {
   const { id } = useParams();
   const albumData = albumsData[id];
+  const {playWithId} = useContext(PlayerContext);
 
   return (
     <>
@@ -33,7 +35,7 @@ export const Albums_Display = () => {
       <hr />
       {
         songsData.map((item, index) => (
-          <div key={index} className='disp-album-data'>
+          <div onClick={()=>playWithId(item.id)} key={index} className='disp-album-data'>
             <div className='song-index'>
               <b style={{ marginRight: '1rem', color: '#a7a7a7' }}>{index + 1}</b>
               <img className='disp-album-data-image' src={item.image} alt='' />

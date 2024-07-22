@@ -1,31 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/Player.css';
-import { songsData,assets } from '../assets/frontend-assets/assets';
+import { assets } from '../assets/frontend-assets/assets';
+import { PlayerContext } from '../pages/PlayerContext';
 
 export const Player = () => {
+
+  const {track,seekBg,seekBar,playStatus,play,pause,previous,next,time,seekSong} = useContext(PlayerContext);
+
   return (
     <div className='player'>
       <div className='player-content'>
-        <img src={songsData[0].image} alt={songsData[0].name} />
+        <img src={track.image} alt={track.name} />
         <div className='song-details'>
-          <p style={{fontWeight:'500'}}>{songsData[0].name}</p>
-          <p style={{fontWeight:'300'}}>{songsData[0].desc.slice(0,12)}</p>
+          <p style={{fontWeight:'500'}}>{track.name}</p>
+          <p style={{fontWeight:'300'}}>{track.desc.slice(0,12)}</p>
         </div>
       </div>
       <div className='player-controls'>
         <div className='player-controls-items'>
             <img className='player-controls-button' src={assets.shuffle_icon} alt=''/>
-            <img className='player-controls-button' src={assets.prev_icon} alt=''/>
-            <img className='player-controls-button' src={assets.play_icon} alt=''/>
-            <img className='player-controls-button' src={assets.next_icon} alt=''/>
+            <img onClick={previous} className='player-controls-button' src={assets.prev_icon} alt=''/>
+            {playStatus ? 
+            <img onClick={pause} className='player-controls-button' src={assets.pause_icon} alt=''/>
+            :
+            <img onClick={play} className='player-controls-button' src={assets.play_icon} alt=''/>
+            }
+            <img onClick={next} className='player-controls-button' src={assets.next_icon} alt=''/>
             <img className='player-controls-button' src={assets.loop_icon} alt=''/>
         </div>
         <div className='player-time'>
-            <p style={{fontSize:'0.7rem'}}>0:00</p>
-            <div className='player-timeline'>
-                <div className='player-line'></div>
+            <p style={{fontSize:'0.7rem'}}>{time.currentTime.minute}:{time.currentTime.second}</p>
+            <div ref={seekBg} onClick={seekSong} className='player-timeline'>
+                <div ref={seekBar} className='player-line'></div>
             </div>
-            <p style={{fontSize:'0.7rem'}}>3.15</p>
+            <p style={{fontSize:'0.7rem'}}>{time.totalTime.minute}:{time.totalTime.second}</p>
         </div>
       </div>
       <div className='player-tools'>
