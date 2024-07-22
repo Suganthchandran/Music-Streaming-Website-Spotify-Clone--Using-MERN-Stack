@@ -1,3 +1,4 @@
+import logo from './logo.png'
 import bell_icon from './bell.png'
 import home_icon from './home.png'
 import like_icon from './like.png'
@@ -46,6 +47,7 @@ import DSP from './Albums/DSP_Album.jpg'
 import drake from './Albums/Drake_Album.jpeg'
 
 export const assets = {
+    logo,
     bell_icon,
     home_icon,
     like_icon,
@@ -122,6 +124,8 @@ export const songsData = [
         id:0,
         name: "Blue Bird Naurto",
         image: blue_bird,
+        artist: 'Ikimonogakari',
+        location: 'Naruto',
         file:song1,
         desc:"Put a smile on your face with these happy tunes",
         duration:"3:00"
@@ -130,6 +134,8 @@ export const songsData = [
         id:1,
         name: "Guren no Yumiya",
         image: guren_no_yumiya,
+        artist: 'Linked Horizon',
+        location : 'Demon Slayer',
         file:song2,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:20"
@@ -138,6 +144,8 @@ export const songsData = [
         id:2,
         name: "Mundhinam Parthene",
         image: mundhinam_parthene,
+        artist: 'Harris Jayaraj',
+        location: 'Vaaranam Aayiram',
         file:song3,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:32"
@@ -146,6 +154,8 @@ export const songsData = [
         id:3,
         name: "Uyirin Uyire",
         image: uyirin_uyire,
+        artist: 'Harris Jayaraj',
+        location: 'Kaakha Kaakha',
         file:song1,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:50"
@@ -154,6 +164,8 @@ export const songsData = [
         id:4,
         name: "Singam Singam",
         image: singam_singam,
+        artist: 'DSP',
+        location: 'Singam',
         file:song2,
         desc:"Put a smile on your face with these happy tunes",
         duration:"3:10"
@@ -161,7 +173,9 @@ export const songsData = [
     {
         id:5,
         name: "Oo Antava",
-        image: oo_antava    ,
+        image: oo_antava,
+        artist: 'DSP',
+        location: 'Pushpa',
         file:song3,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:45"
@@ -170,6 +184,8 @@ export const songsData = [
         id:6,
         name: "The Next Episode",
         image: the_next_episode,
+        artist: 'Snoop Dogg',
+        location: 'Album-Song',
         file:song1,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:18"
@@ -178,6 +194,8 @@ export const songsData = [
         id:7,
         name: "Nuthin But A G Thang",
         image: nuthin_but_a_G_thang,
+        artist: 'Snoop Dogg',
+        location: 'Album-Song',
         file:song2,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:35"
@@ -186,6 +204,8 @@ export const songsData = [
         id:8,
         name: "One Dance",
         image: one_dance,
+        artist: 'Drake',
+        location: 'Album-Song',
         file:song2,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:35"
@@ -194,6 +214,8 @@ export const songsData = [
         id:9,
         name: "God's Plan",
         image: gods_plan,
+        artist: 'Drake',
+        location: 'Album-Song',
         file:song2,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:35"
