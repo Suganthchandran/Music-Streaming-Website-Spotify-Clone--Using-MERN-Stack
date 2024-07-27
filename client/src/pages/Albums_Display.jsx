@@ -42,7 +42,7 @@ export const Albums_Display = () => {
               <p>{item.name}</p>
             </div>
             <p className='song-artist'>{item.artist}</p>
-            <p className='disp-album-album'>{item.location}</p>
+            <p className='disp-album-album'>{item.album}</p>
             <p className='disp-album-date'>{item.duration}</p>
           </div>
         ))
