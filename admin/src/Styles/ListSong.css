@@ -1,0 +1,27 @@
+.disp-album-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    margin:0 3%;
+    color: #a7a7a7;
+    font-size: 0.8rem;
+    align-items: center;
+}
+
+.disp-album-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr  ;
+    align-items: center;
+    margin-right: 2%;
+    margin:0 3%;
+    padding: 0.3rem;
+    cursor: pointer;
+    color: #a7a7a7;
+    font-size: 0.8rem;
+}
+
+.disp-album-data:hover {
+    background-color: #ffffff2b;
+}

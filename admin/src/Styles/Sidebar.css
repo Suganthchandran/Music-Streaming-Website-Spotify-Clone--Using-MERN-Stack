@@ -1,0 +1,55 @@
+.admin-sidebar{
+    width: 25%;
+    background-color: #121212;
+    min-height: 100vh;
+    margin: 0.5rem;
+}
+
+.admin-logo{
+    margin: 3.5%;
+}
+
+.admin-logo img{
+    width: 90%;
+}
+
+.admin-sidebar-elements {
+    background-color: #121212;
+    flex: 0 0 auto;
+    margin: 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 4px;
+    padding: 10px;
+  }
+  
+.admin-elements {
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 4%;
+    gap: 6%;
+    cursor: pointer;
+    margin-bottom: 7%;
+    margin-left: 8%;
+}
+
+.admin-elements img{
+    width: 17%;
+}
+
+.admin-elements h1{
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-left: 2%;
+}
+
+.admin-elements:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05); 
+}
+
+.admin-elements:hover img {
+    transform: scale(1.1);
+}
