@@ -3,8 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { url } from './Display';
 import { toast } from 'react-toastify';
 import '../Styles/ListSong.css'
+import { MdDelete } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 
 const ListSong = () => {
+
+  const navigate = useNavigate();
 
   const [data, setData] = useState([]);
 
@@ -19,6 +24,23 @@ const ListSong = () => {
     }
     catch (error) {
       toast.error("Error Occured");
+    }
+  }
+
+  const removeSongs = async (id)=>{
+    try{
+      const response = await axios.post(`${url}/api/song/delete`,{id});
+
+      if(response.data.success)
+      {
+        toast.success(response.data.message);
+        await fetchSongs();
+      }
+
+    }
+    catch(error)
+    {
+      toast.error("Something Error Happen");
     }
   }
 
@@ -43,11 +65,15 @@ const ListSong = () => {
         data.map((item, index) => (
           <div key={index} className='disp-album-data'>
             <b style={{ color: '#a7a7a7' }}>{index + 1}</b>
-            <img src={item.image} alt='' />
+            <img style={{width:'32%'}} src={item.image} alt='' />
             <p>{item.name}</p>
             <p>{item.album}</p>
             <p>{item.artist}</p>
             <p>{item.duration}</p>
+            <div className='disp-album-action'>
+            <MdDelete onClick={()=>removeSongs(item._id)} className='icon' />
+            <MdEdit onClick={()=>navigate('/edit-songs')} className='icon' />
+            </div>
           </div>
         ))
       }

@@ -1,0 +1,48 @@
+.disp-album-body-albums {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 2rem;
+    margin-left: 8% !important;
+    margin-right: -10% !important;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    margin:0 3%;
+    color: #a7a7a7;
+    font-size: 0.8rem;
+    align-items: center;
+}
+
+.disp-album-data-albums {
+    display: grid;
+    margin-left: 5%;
+    text-align: start;
+    margin-left: 8% !important;
+    margin-right: -10% !important;
+    grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 1fr 1fr  ;
+    align-items: start;
+    margin:1%;
+    margin-left: 3%;
+    padding: 0.3rem;
+    color: #a7a7a7;
+    font-size: 0.8rem;
+}
+
+.disp-album-data-albums:hover {
+    background-color: #ffffff2b;
+}
+
+.disp-album-action-albums {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem; 
+    margin-left: -75%;
+    margin-top: 5%;
+}
+
+.disp-album-action-albums .icon{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+

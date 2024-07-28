@@ -1,6 +1,6 @@
 .disp-album-body {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 1fr 1fr;
     margin-top: 2rem;
     margin-bottom: 1rem;
     padding-left: 0.5rem;
@@ -12,12 +12,12 @@
 
 .disp-album-data {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr  ;
-    align-items: center;
-    margin-right: 2%;
-    margin:0 3%;
+    text-align: start;
+    grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 1fr 1fr  ;
+    align-items: start;
+    margin:1%;
+    margin-left: 3%;
     padding: 0.3rem;
-    cursor: pointer;
     color: #a7a7a7;
     font-size: 0.8rem;
 }
@@ -25,3 +25,19 @@
 .disp-album-data:hover {
     background-color: #ffffff2b;
 }
+
+.disp-album-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem; 
+    margin-left: -75%;
+    margin-top: 5%;
+}
+
+.disp-album-action .icon{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
