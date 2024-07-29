@@ -67,23 +67,24 @@
     gap:1.25rem;
 }
 
-.player-timeline{
-    width: 30vw;
+.player-timeline {
+    width: 30vw; /* Adjust as needed */
     position: relative;
     max-width: 500px;
     height: 0.18rem;
-    background-color: gray;
+    background-color: gray; /* Background color of the timeline */
     cursor: pointer;
-}
-
-.player-line{
-    height: 0.18rem;
+  }
+  
+  .player-line {
+    height: 100%; /* Full height of the timeline */
+    background-color: green; /* Line color */
     position: absolute;
     top: 0;
     left: 0;
-    border: none;
-    background-color: green;
-}
+    transition: width 0.1s ease; /* Smooth transition */
+  }
+  
 
 .player-tools {
     display: flex;
@@ -96,14 +97,44 @@
 .player-tools-button {
     width: 1rem !important; 
     height: 0.7rem !important;
+    cursor: pointer;
 }
 
 .player-tools-volume {
-    width: 3rem;
-    background-color: white;
-    height: 0.12rem;
-    margin-left: -3%;
-}
+    width: 3rem; /* Adjust width as needed */
+    height: 0.12rem; /* Height of the slider */
+    background-color: #ccc; /* Background color of the slider track */
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .player-tools-volume .player-line {
+    height: 100%; /* Fill the height of the slider track */
+    background-color: blue; /* Change color to indicate volume level */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+/* Player.css */
+
+.player.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background-color: black; /* Ensure it covers the screen properly */
+  }
+  
+  /* Ensure the rest of your app's layout supports fullscreen */
+  html, body {
+    height: 100% !important;
+    margin: 0 !important;
+  }
+  
+  
 
 @media (min-width: 1024px) {
     .player-content {

@@ -17,6 +17,7 @@ const addAlbum = async (req,res)=>{
         }
 
         console.log(albumData);
+        
         const album = albumModel(albumData);
         await album.save();
 

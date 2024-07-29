@@ -1,138 +1,260 @@
 import { createContext, useEffect, useRef, useState } from "react";
-import { songsData,albumsData } from '../assets/frontend-assets/assets'
 import axios from 'axios';
 
 export const PlayerContext = createContext();
 
 const PlayerContextProvider = (props) => {
-
     const url = 'http://localhost:4000';
 
-    const [songsData,setSongsData] = useState([]);
-    const [albumsData,setAlbumsData] = useState([]);
-    const audioRef = useRef();
-    const seekBg = useRef();
-    const seekBar = useRef();
+    const [songsData, setSongsData] = useState([]);
+    const [albumsData, setAlbumsData] = useState([]);
+    const [playbackOrder, setPlaybackOrder] = useState([]);
+    const [originalPlaybackOrder, setOriginalPlaybackOrder] = useState([]);
+    const audioRef = useRef(null);
+    const seekBg = useRef(null);
+    const seekBar = useRef(null);
 
-    const [track,setTrack] = useState(songsData[0]);
-    const [playStatus,setPlayStatus] = useState(false);
-    const [time,setTime] = useState({
-        currentTime: {
-            minute:0,
-            second:0
-        },
-        totalTime: {
-            minute:0,
-            second:0
-        }
-    })
+    const [isLooping, setIsLooping] = useState(false);
+    const [isShuffling, setIsShuffling] = useState(false);
+    const [volume, setVolume] = useState(1); // Volume state
 
-    const play = ()=>{
-        audioRef.current.play();
-        setPlayStatus(true);
-    }
+    const [track, setTrack] = useState(null);
+    const [playStatus, setPlayStatus] = useState(false);
+    const [time, setTime] = useState({
+        currentTime: { minute: 0, second: 0 },
+        totalTime: { minute: 0, second: 0 }
+    });
 
-    const pause = ()=>{
-        audioRef.current.pause();
-        setPlayStatus(false);
-    }
+    useEffect(() => {
+        const getSongsData = async () => {
+            try {
+                const response = await axios.get(`${url}/api/song/list`);
+                const songs = response.data.songs;
+                setSongsData(songs);
+                setOriginalPlaybackOrder(songs.map(song => song._id));
+                setPlaybackOrder(songs.map(song => song._id));
+                setTrack(songs[0]);
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-    const playWithId = async (id)=>{
-        await setTrack(songsData[id]);
-        audioRef.current.play();
-        setPlayStatus(true);
-    }
+        const getAlbumsData = async () => {
+            try {
+                const response = await axios.get(`${url}/api/album/list`);
+                setAlbumsData(response.data.Album);
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-    const previous = async ()=>{
-        if(track.id > 0) {
-            await setTrack(songsData[track.id-1]);
-            await audioRef.current.play();
+        getSongsData();
+        getAlbumsData();
+    }, []);
+
+    const play = () => {
+        if (audioRef.current) {
+            audioRef.current.play();
             setPlayStatus(true);
         }
-    }
+    };
 
-    const next = async ()=>{
-        if(track.id < songsData.length-1) {
-            await setTrack(songsData[track.id+1]);
-            await audioRef.current.play();
-            setPlayStatus(true);
+    const pause = () => {
+        if (audioRef.current) {
+            audioRef.current.pause();
+            setPlayStatus(false);
         }
-    }
+    };
 
-    const seekSong = async (e)=>{
-        audioRef.current.currentTime = ((e.nativeEvent.offsetX / seekBg.current.offsetWidth)*audioRef.current.duration);
-    }
+    const toggleLoop = () => {
+        setIsLooping(prev => !prev);
+    };
 
-    const getSongsData = async ()=>{
-        try{
-            const response = await axios.get(`${url}/api/song/list`);
-            setSongsData(response.data.songs);
-            setTrack(response.data.songs[0]);
+    const toggleShuffle = () => {
+        if (isShuffling) {
+            setPlaybackOrder(originalPlaybackOrder);
+        } else {
+            shufflePlaybackOrder();
         }
-        catch(error)
-        {
+        setIsShuffling(prev => !prev);
+    };
 
+    const shufflePlaybackOrder = () => {
+        const shuffledOrder = [...originalPlaybackOrder];
+        for (let i = shuffledOrder.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledOrder[i], shuffledOrder[j]] = [shuffledOrder[j], shuffledOrder[i]];
         }
-    }
+        setPlaybackOrder(shuffledOrder);
+    };
 
-    const getAlbumsData = async ()=>{
-        try{
-            const response = await axios.get(`${url}/api/album/list`);
-            setAlbumsData(response.data.Album);
+    const playWithId = (id) => {
+        const song = songsData.find(item => item._id === id);
+        if (song) {
+            setTrack(song);
+            if (audioRef.current) {
+                audioRef.current.src = song.url;
+                audioRef.current.load();
+                audioRef.current.oncanplaythrough = () => {
+                    audioRef.current.play();
+                    setPlayStatus(true);
+                };
+            }
         }
-        catch(error)
-        {
+    };
 
+    const previous = () => {
+        const currentIndex = playbackOrder.findIndex(id => id === track?._id);
+        if (currentIndex > 0) {
+            const prevTrack = songsData.find(item => item._id === playbackOrder[currentIndex - 1]);
+            if (prevTrack) {
+                setTrack(prevTrack);
+                if (audioRef.current) {
+                    audioRef.current.src = prevTrack.url;
+                    audioRef.current.load();
+                    audioRef.current.oncanplaythrough = () => {
+                        audioRef.current.play();
+                        setPlayStatus(true);
+                    };
+                }
+            }
         }
-    }
+    };
 
+    const next = () => {
+        const currentIndex = playbackOrder.findIndex(id => id === track?._id);
+        let nextIndex;
+        if (isShuffling) {
+            nextIndex = (currentIndex + 1) % playbackOrder.length;
+        } else {
+            nextIndex = currentIndex < playbackOrder.length - 1 ? currentIndex + 1 : -1;
+        }
+
+        if (nextIndex >= 0) {
+            const nextTrack = songsData.find(item => item._id === playbackOrder[nextIndex]);
+            if (nextTrack) {
+                setTrack(nextTrack);
+                if (audioRef.current) {
+                    audioRef.current.src = nextTrack.url;
+                    audioRef.current.load();
+                    audioRef.current.oncanplaythrough = () => {
+                        audioRef.current.play();
+                        setPlayStatus(true);
+                    };
+                }
+            }
+        } else if (isLooping) {
+            const firstTrack = songsData.find(item => item._id === playbackOrder[0]);
+            if (firstTrack) {
+                setTrack(firstTrack);
+                if (audioRef.current) {
+                    audioRef.current.src = firstTrack.url;
+                    audioRef.current.load();
+                    audioRef.current.oncanplaythrough = () => {
+                        audioRef.current.play();
+                        setPlayStatus(true);
+                    };
+                }
+            }
+        } else {
+            setPlayStatus(false);
+            const firstTrack = songsData.find(item => item._id === playbackOrder[0]);
+            if (firstTrack) {
+                setTrack(firstTrack);
+                if (audioRef.current) {
+                    audioRef.current.src = firstTrack.url;
+                    audioRef.current.load();
+                    audioRef.current.oncanplaythrough = () => {
+                        audioRef.current.pause();
+                        setPlayStatus(false);
+                    };
+                }
+            }
+        }
+    };
+
+    const seekSong = (e) => {
+        if (audioRef.current && seekBg.current) {
+            const rect = seekBg.current.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const percentage = Math.max(0, Math.min(1, x / seekBg.current.offsetWidth));
+            const newTime = percentage * audioRef.current.duration;
+            console.log("Seeking to:", newTime, "Percentage:", percentage); // Debugging line
+            audioRef.current.currentTime = newTime;
+        }
+    };
     
 
+    const adjustVolume = (newVolume) => {
+        if (audioRef.current) {
+            audioRef.current.volume = newVolume;
+            setVolume(newVolume);
+        }
+    };
 
-    useEffect(()=>{
-        setTimeout(()=>{
-            audioRef.current.ontimeupdate = ()=>{
-
-                seekBar.current.style.width = Math.floor(audioRef.current.currentTime/audioRef.current.duration*100)+"%";
+    useEffect(() => {
+        if (audioRef.current) {
+            const handleTimeUpdate = () => {
+                if (seekBar.current) {
+                    seekBar.current.style.width = Math.floor(audioRef.current.currentTime / audioRef.current.duration * 100) + "%";
+                }
 
                 setTime({
                     currentTime: {
-                        second:Math.floor(audioRef.current.currentTime%60),
-                        minute:Math.floor(audioRef.current.currentTime/60)
+                        second: Math.floor(audioRef.current.currentTime % 60),
+                        minute: Math.floor(audioRef.current.currentTime / 60)
                     },
                     totalTime: {
-                        second:Math.floor(audioRef.current.duration%60),
-                        minute:Math.floor(audioRef.current.duration/60)
+                        second: Math.floor(audioRef.current.duration % 60),
+                        minute: Math.floor(audioRef.current.duration / 60)
                     }
-                })
-            }
-        },1000);
-    },[audioRef])
+                });
+            };
 
-    useEffect(()=>{
-        getSongsData();
-        getAlbumsData();
-    },[])
+            const handleEnded = () => {
+                if (isLooping) {
+                    if (seekBar.current) {
+                        seekBar.current.style.width = '0%';
+                    }
+                    audioRef.current.currentTime = 0;
+                    audioRef.current.play();
+                } else {
+                    next();
+                }
+            };
+
+            audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
+            audioRef.current.addEventListener('ended', handleEnded);
+
+            return () => {
+                audioRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+                audioRef.current.removeEventListener('ended', handleEnded);
+            };
+        }
+    }, [audioRef, next, isLooping]);
 
     const contextValue = {
         audioRef,
         seekBg,
         seekBar,
-        track,setTrack,
-        playStatus,setPlayStatus,
-        time,setTime,
-        play,pause,
+        track, setTrack,
+        playStatus, setPlayStatus,
+        time, setTime,
+        play, pause,
         playWithId,
-        previous,next,
+        previous, next,
         seekSong,
-        songsData,albumsData
-    }
+        songsData, albumsData,
+        toggleLoop, isLooping,
+        toggleShuffle, isShuffling,
+        volume, adjustVolume // Add volume and adjustVolume to context
+    };
 
-    return(
+    return (
         <PlayerContext.Provider value={contextValue}>
             {props.children}
         </PlayerContext.Provider>
-    )
-}
+    );
+};
 
 export default PlayerContextProvider;

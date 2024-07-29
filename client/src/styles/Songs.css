@@ -1,5 +1,5 @@
 .song-main{
-    min-width: 110px;
+    width: 110px;
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 4px;
@@ -13,7 +13,7 @@
 
 .song-image{
     border-radius: 4px;
-    max-width: 95%;
+    width: 110px;
 }
 
 .song-name{

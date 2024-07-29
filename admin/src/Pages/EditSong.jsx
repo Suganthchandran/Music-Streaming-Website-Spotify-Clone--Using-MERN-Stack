@@ -14,24 +14,32 @@ const EditSong = () => {
     const [desc, setDesc] = useState("");
     const [album, setAlbum] = useState("none");
     const [artist, setArtist] = useState("");
+    const [albumData, setAlbumData] = useState([]); 
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        const fetchSongData = async () => {
-            try {
-                const response = await axios.get(`${url}/api/song/list`);
-                if (response.data.success) {
-                    const song = response.data.song;
-                    setName(song.name);
-                    setDesc(song.desc);
-                    setAlbum(song.album);
-                    setArtist(song.artist);
-                }
-            } catch (error) {
-                toast.error("Error fetching song data");
+    const fetchSongData = async () => {
+        try {
+            const response = await axios.get(`${url}/api/song/findsong/${id}`);
+            if (response.data.success) {
+                const song = response.data.list;
+                setName(song.name);
+                setDesc(song.desc);
+                setAlbum(song.album);
+                setArtist(song.artist);
+                setImage(song.image);
+               
+            } else {
+                toast.error("Failed to fetch song data");
             }
-        };
-        fetchSongData();
+        } catch (error) {
+            toast.error("Error fetching song data");
+        }
+    };
+
+    useEffect(() => {   
+        if (id) {
+            fetchSongData();
+        }
     }, [id]);
 
     const handleSubmit = async (e) => {
@@ -44,8 +52,12 @@ const EditSong = () => {
             formData.append('desc', desc);
             formData.append('album', album);
             formData.append('artist', artist);
-            formData.append('image', image);
-            formData.append('audio', song);
+            if (image instanceof File) {
+                formData.append('image', image);
+            }
+            if (song instanceof File) {
+                formData.append('audio', song);
+            }
 
             const response = await axios.put(`${url}/api/song/update/${id}`, formData);
 
@@ -68,6 +80,29 @@ const EditSong = () => {
         }
     };
 
+    const loadAlbumData = async ()=>{
+        try{
+            const response = await axios.get(`${url}/api/album/list`);
+    
+            if(response.data.success)
+            {
+              setAlbumData(response.data.Album);
+            }
+            else
+            {
+              toast.error("Unable to Load Album Data");
+            }
+        }
+        catch(error)
+        {
+            toast.error("Something Error Happens");
+        }
+      }
+    
+      useEffect(()=>{
+        loadAlbumData();
+      },[])
+
     return loading ? (
         <div>
             <span className="loader"></span>
@@ -79,14 +114,14 @@ const EditSong = () => {
                     <label>Upload Song </label>
                     <input onChange={(e) => setSong(e.target.files[0])} type='file' id='song' accept='audio/*' hidden />
                     <label htmlFor='song'>
-                        <img className='addsong-upload-image' src={song ? assets.upload_added : assets.upload_song} alt='' />
+                        <img className='addsong-upload-image' src={song ? (song instanceof File ? URL.createObjectURL(song) : song) : assets.upload_song} alt='' />
                     </label>
                 </div>
                 <div className='form-elements'>
                     <label>Upload Image </label>
                     <input onChange={(e) => setImage(e.target.files[0])} type='file' id='image' accept='image/*' hidden />
                     <label htmlFor='image'>
-                        <img className='addsong-upload-image' src={image ? URL.createObjectURL(image) : assets.upload_area} alt='' />
+                        <img className='addsong-upload-image' src={image ? (image instanceof File ? URL.createObjectURL(image) : image) : assets.upload_area} alt='' />
                     </label>
                 </div>
             </div>
@@ -103,8 +138,7 @@ const EditSong = () => {
                     <label>Song Album</label>
                     <select onChange={(e) => setAlbum(e.target.value)} value={album} name='songAlbum'>
                         <option value=''>Select Album</option>
-                        <option value='album1'>Album 1</option>
-                        <option value='album2'>Album 2</option>
+                        {albumData.map((item,index)=>(<option value={item.name}>{item.name}</option>))}
                     </select>
                 </div>
                 <div className='form-elements'>

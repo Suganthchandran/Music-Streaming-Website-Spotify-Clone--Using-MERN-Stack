@@ -19,7 +19,7 @@ const Display = () => {
         <Route path='/add-albums' element={<AddAlbum/>} />
         <Route path='/list-songs' element={<ListSong/>} />
         <Route path='/list-albums' element={<ListAlbum/>} />
-        <Route path='/edit-songs' element={<EditSong/>} />
+        <Route path='/update/:id' element={<EditSong/>} />
       </Routes>
     </div>
   )

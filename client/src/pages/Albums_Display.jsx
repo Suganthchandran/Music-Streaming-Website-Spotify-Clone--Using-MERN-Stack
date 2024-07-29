@@ -1,16 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../styles/Albums_Display.css';
-import { albumsData, assets, songsData } from '../assets/frontend-assets/assets';
+import { assets } from '../assets/frontend-assets/assets';
 import { Navbar } from '../components/Navbar';
 import { useParams } from 'react-router-dom';
 import { PlayerContext } from './PlayerContext';
 
-export const Albums_Display = () => {
+export const Albums_Display = ({album}) => {
   const { id } = useParams();
-  const albumData = albumsData[id];
-  const {playWithId} = useContext(PlayerContext);
+  const [albumData, setAlbumData] = useState("");
+  const { playWithId } = useContext(PlayerContext);
+  const { albumsData, songsData } = useContext(PlayerContext);
 
-  return (
+  useEffect(() => {
+    albumsData.map((item) => {
+      if (item._id == id) {
+        setAlbumData(item);
+      }
+    })
+  }, [])
+
+  return albumData ? (
     <>
       <Navbar />
       <div className='disp-album-main'>
@@ -34,8 +43,8 @@ export const Albums_Display = () => {
       </div>
       <hr />
       {
-        songsData.map((item, index) => (
-          <div onClick={()=>playWithId(item.id)} key={index} className='disp-album-data'>
+        songsData.filter((item)=>(item.album == album.name)).map((item, index) => (
+          <div onClick={() => playWithId(item._id)} key={index} className='disp-album-data'>
             <div className='song-index'>
               <b style={{ marginRight: '1rem', color: '#a7a7a7' }}>{index + 1}</b>
               <img className='disp-album-data-image' src={item.image} alt='' />
@@ -48,5 +57,5 @@ export const Albums_Display = () => {
         ))
       }
     </>
-  );
+  ) : null ;
 }
