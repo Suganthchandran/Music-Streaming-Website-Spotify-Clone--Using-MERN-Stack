@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { assets } from '../assets/assets';
 import '../Styles/AddSong.css';
 import axios from 'axios';
@@ -12,6 +12,7 @@ const AddSong = () => {
   const [desc, setDesc] = useState("");
   const [album, setAlbum] = useState("none");
   const [artist, setArtist] = useState("");
+  const [albumData, setAlbumData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -48,6 +49,29 @@ const AddSong = () => {
     }
   }
 
+  const loadAlbumData = async ()=>{
+    try{
+        const response = await axios.get(`${url}/api/album/list`);
+
+        if(response.data.success)
+        {
+          setAlbumData(response.data.Album);
+        }
+        else
+        {
+          toast.error("Unable to Load Album Data");
+        }
+    }
+    catch(error)
+    {
+        toast.error("Something Error Happens");
+    }
+  }
+
+  useEffect(()=>{
+    loadAlbumData();
+  },[])
+
   return loading ? (
     <div>
       <span className="loader"></span>
@@ -83,8 +107,7 @@ const AddSong = () => {
           <label>Song Album</label>
           <select onChange={(e) => setAlbum(e.target.value)} value={album} name='songAlbum'>
             <option value=''>Select Album</option>
-            <option value='album1'>Album 1</option>
-            <option value='album2'>Album 2</option>
+            {albumData.map((item,index)=>(<option value={item.name}>{item.name}</option>))}
           </select>
         </div>
         <div className='form-elements'>
