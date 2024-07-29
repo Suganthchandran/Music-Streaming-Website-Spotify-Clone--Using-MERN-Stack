@@ -67,7 +67,8 @@ const ListAlbum = () => {
             <img style={{width:'32%'}} src={item.image} alt='' />
             <p>{item.name}</p>
             <p>{item.desc}</p>
-            <p>{item.bgColor}</p>
+            {/* <p>{item.bgColor}</p> */}
+            <input type='color' value={item.bgColor} />
             <div className='disp-album-action-albums'>
             <MdDelete onClick={()=>removeSongs(item._id)} className='icon' />
             <MdEdit onClick={()=>navigate('/edit-songs')} className='icon' />
