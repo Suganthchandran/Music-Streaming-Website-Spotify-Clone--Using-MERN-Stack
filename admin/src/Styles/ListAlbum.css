@@ -1,9 +1,7 @@
 .disp-album-body-albums {
     display: grid;
-    grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 0.9fr 1fr 1fr 1fr 1fr 1fr;
     margin-top: 2rem;
-    margin-left: 8% !important;
-    margin-right: -10% !important;
     margin-bottom: 1rem;
     padding-left: 0.5rem;
     margin:0 3%;
@@ -16,12 +14,10 @@
     display: grid;
     margin-left: 5%;
     text-align: start;
-    margin-left: 8% !important;
-    margin-right: -10% !important;
-    grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 1fr 1fr  ;
+    grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 1fr;
     align-items: start;
     margin:1%;
-    margin-left: 3%;
+    margin-left: 4%;
     padding: 0.3rem;
     color: #a7a7a7;
     font-size: 0.8rem;
