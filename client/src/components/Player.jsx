@@ -58,7 +58,7 @@ export const Player = () => {
     setIsFullscreen(prev => !prev);
   };
 
-  return (
+  return track ?(
     <div className={`player ${isFullscreen ? 'fullscreen' : ''}`}>
       <div className='player-content'>
         <img src={track.image} alt={track.name} />
@@ -116,5 +116,5 @@ export const Player = () => {
         <img className='player-tools-button' onClick={toggleFullscreen} src={assets.zoom_icon} alt='' />
       </div>
     </div>
-  );
+  ): null;
 };
