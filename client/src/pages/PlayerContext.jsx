@@ -18,7 +18,8 @@ const PlayerContextProvider = (props) => {
     const [isShuffling, setIsShuffling] = useState(false);
     const [volume, setVolume] = useState(1);
 
-    const [track, setTrack] = useState(null);
+    const [track, setTrack] = useState(songsData[0]);
+   
     const [playStatus, setPlayStatus] = useState(false);
     const [time, setTime] = useState({
         currentTime: { minute: 0, second: 0 },
@@ -30,6 +31,7 @@ const PlayerContextProvider = (props) => {
             try {
                 const response = await axios.get(`${url}/api/song/list`);
                 const songs = response.data.songs;
+                
                 setSongsData(songs);
                 setOriginalPlaybackOrder(songs.map(song => song._id));
                 setPlaybackOrder(songs.map(song => song._id));

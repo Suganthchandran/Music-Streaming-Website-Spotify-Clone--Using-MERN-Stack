@@ -5,6 +5,10 @@
     gap: 2rem;
 }
 
+.playlist{
+    font-size: 0.7rem;
+}
+
 .disp-album-image {
     width: 8rem;
     height: 8rem;
@@ -34,26 +38,16 @@
 }
 
 .disp-album-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr auto;
     margin-top: 2rem;
     margin-bottom: 1rem;
     padding-left: 0.5rem;
-    margin-right: 3%;
     color: #a7a7a7;
     font-size: 0.8rem;
     align-items: center;
 }
 
-.disp-album-date {
-    margin-right: 1rem;
-}
-
 .disp-album-data {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr auto;
     align-items: center;
-    margin-right: 2%;
     padding: 0.3rem;
     cursor: pointer;
     color: #a7a7a7;
@@ -65,8 +59,7 @@
 }
 
 .disp-album-data-image {
-    width: 2.5rem;
-    margin-right: 1rem;
+    width: 35px;
 }
 
 .song-index {
@@ -75,9 +68,8 @@
     gap: 1rem;
 }
 
-.song-artist {
-    margin-left: 4rem; 
-    display: none;
+.song-desc {
+    display: block;
 }
 
 .song-duration {
@@ -85,16 +77,101 @@
     width: 1rem;
 }
 
-@media (min-width: 640px) {
-    .disp-album-body {
-        grid-template-columns: 1fr 1fr 1fr auto;
+table{
+    margin-top: 1rem;
+    width: 100%;
+    border: none;
+}
+
+@media (max-width:900px) {
+    .song-desc {
+        display: none;
     }
-    
-    .song-artist {
+}
+
+@media (max-width:750px) {
+    .song-dura {
+        display: none;
+    }
+
+    .disp-album-name{
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width:700px) {
+    .total-dura{
+        display: none;
+    }
+}
+
+@media (max-width:670px) {
+    .song-artist{
+        display: none;
+    }
+
+    /* .disp-album-name{
+        font-size: 1.4rem;
+    }
+
+    .playlist{
+        font-size: 0.6rem;
+    }
+
+    .disp-album-desc{
+        font-size: 0.6rem; 
+    } */
+
+    .disp-album-main {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .disp-album-image {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .playlist{
+        display: none;
+    }
+}
+
+@media (max-width:550px) {
+    .song-artist{
         display: block;
     }
 
-    .disp-album-data {
-        grid-template-columns: 1fr 1fr 1fr auto;
+    .disp-album-main {
+        flex-direction: row;
+        gap: 2rem;
+    }
+}
+
+@media (max-width:525px) {
+    .disp-album-main {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width:470px) {
+    .song-artist{
+        display: none;
+    }
+}
+
+@media (max-width:380px) {
+    .disp-album-data-image{
+        display: none;
+    }
+
+    .disp-album-image {
+        width: 8rem;
+        height: 8rem;
     }
 }

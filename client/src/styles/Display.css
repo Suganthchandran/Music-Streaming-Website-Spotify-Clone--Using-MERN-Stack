@@ -1,16 +1,23 @@
 .display{
-    width: 100%;
+    width: 90%;
     margin: 0.5rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 4px;
     background-color: #121212;
     color: white;
     overflow: auto;
+    margin-left: 17rem;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
     .display {
       width:75%;
-      margin-left: 0;
     }
   }
+
+@media (max-width: 550px) {
+  .display{
+    margin-left: 5rem;
+    width: 100%;
+  }
+}

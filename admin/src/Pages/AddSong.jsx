@@ -100,7 +100,7 @@ const AddSong = () => {
           <input onChange={(e) => setName(e.target.value)} value={name} type='text' name='songName' />
         </div>
         <div className='form-elements'>
-          <label>Song Description</label>
+          <label>Song Source</label>
           <input onChange={(e) => setDesc(e.target.value)} value={desc} type='text' name='songDescription' />
         </div>
         <div className='form-elements'>

@@ -85,3 +85,40 @@
     border-radius: 16px;
     cursor: pointer;
 }
+
+@media (max-width:700px) {
+    .navbar-premium-butt{
+        padding: 8px;
+        font-size: 8px;
+        margin-bottom: 0.2rem;
+    }
+
+    .navbar-install-app{
+        padding: 8px;
+        font-size: 8px;
+    }
+}
+
+@media (max-width:620px) {
+    .navbar-install-app{
+        display: none;
+    }
+}
+
+@media (max-width:550px) {
+    .navbar-install-app{
+        display: block;
+    }
+}
+
+@media (max-width:415px) {
+    .navbar-install-app{
+        display: none;
+    }
+}
+
+@media (max-width:335px){
+    .navbar-premium-butt{
+        display: none;
+    }
+}

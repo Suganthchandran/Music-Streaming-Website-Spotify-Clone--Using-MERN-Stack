@@ -3,11 +3,10 @@ import '../styles/Player.css';
 import { assets } from '../assets/frontend-assets/assets';
 import { PlayerContext } from '../pages/PlayerContext';
 
-export const Player = () => {
+export const Player = ({ toggleFullscreen }) => {
   const { track, seekBg, seekBar, playStatus, play, pause, previous, next, time, seekSong, isLooping, toggleLoop, toggleShuffle, isShuffling, adjustVolume, volume } = useContext(PlayerContext);
 
   const [isDragging, setIsDragging] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const volumeRef = useRef(null);
 
   const handleVolumeChange = (e) => {
@@ -49,17 +48,8 @@ export const Player = () => {
     };
   }, [isDragging]);
 
-  const toggleFullscreen = () => {
-    if (document.fullscreenElement) {
-      document.exitFullscreen().catch(err => console.error("Error exiting fullscreen: ", err));
-    } else {
-      document.documentElement.requestFullscreen().catch(err => console.error("Error entering fullscreen: ", err));
-    }
-    setIsFullscreen(prev => !prev);
-  };
-
-  return track ?(
-    <div className={`player ${isFullscreen ? 'fullscreen' : ''}`}>
+  return track ? (
+    <div className='player'>
       <div className='player-content'>
         <img src={track.image} alt={track.name} />
         <div className='song-details'>
@@ -116,5 +106,5 @@ export const Player = () => {
         <img className='player-tools-button' onClick={toggleFullscreen} src={assets.zoom_icon} alt='' />
       </div>
     </div>
-  ): null;
+  ) : null;
 };

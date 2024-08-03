@@ -1,3 +1,5 @@
+/* Player.css */
+
 .player {
     position: fixed;
     bottom: 0;
@@ -10,64 +12,64 @@
     color: white;
     padding: 0px 2.3%;
     z-index: 1000;
-}
-
-.player-content {
+    transition: height 0.3s; /* Smooth transition for height change */
+  }
+  
+  .player-content {
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-.song-details {
+  }
+  
+  .song-details {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
-    
-}
-
-.song-details p {
+  }
+  
+  .song-details p {
     margin: 0;
     font-size: 0.7rem;
-}
-
-.player img {
+  }
+  
+  .player img {
     width: 2.4rem;
     height: 2.4rem;
     border-radius: 4px;
     object-fit: contain;
-}
-
-.player-controls {
+  }
+  
+  .player-controls {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
     margin-left: 6%;
     margin-top: 1.7%;
-}
-
-.player-controls-items {
+  }
+  
+  .player-controls-items {
     display: flex;
     gap: 1rem;
     margin-left: -5%;
-}
-
-.player-controls-button {
+  }
+  
+  .player-controls-button {
     width: 1rem !important; 
     height: 0.7rem !important; 
     cursor: pointer;
     object-fit: contain;
-}
-
-.player-time{
+  }
+  
+  .player-time {
     margin-left: -4.5%;
     margin-top: -1%;
     display: flex;
     align-items: center;
-    gap:1.25rem;
-}
-
-.player-timeline {
+    gap: 1.25rem;
+  }
+  
+  .player-timeline {
     width: 30vw; /* Adjust as needed */
     position: relative;
     max-width: 500px;
@@ -85,22 +87,21 @@
     transition: width 0.1s ease; /* Smooth transition */
   }
   
-
-.player-tools {
+  .player-tools {
     display: flex;
     align-items: center;
     gap: 0.7rem;
     opacity: 0.75;
     margin-right: 4%;
-}
-
-.player-tools-button {
+  }
+  
+  .player-tools-button {
     width: 1rem !important; 
     height: 0.7rem !important;
     cursor: pointer;
-}
-
-.player-tools-volume {
+  }
+  
+  .player-tools-volume {
     width: 3rem; /* Adjust width as needed */
     height: 0.12rem; /* Height of the slider */
     background-color: #ccc; /* Background color of the slider track */
@@ -115,32 +116,72 @@
     top: 0;
     left: 0;
   }
-
-/* Player.css */
-
-.player.fullscreen {
-    position: fixed;
+  
+  /* Fullscreen styles */
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .fullscreen {
+    position: fixed; /* Covers the entire viewport */
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1000;
-    background-color: black; /* Ensure it covers the screen properly */
+    z-index: 9999;
+    background-color: black; /* Ensures background color is applied */
   }
-  
-  /* Ensure the rest of your app's layout supports fullscreen */
-  html, body {
-    height: 100% !important;
-    margin: 0 !important;
-  }
-  
   
 
-@media (min-width: 1024px) {
+  @media (min-width: 1024px) {
     .player-content {
-        display: flex;
+      display: flex;
     }
-    .player-tools{
-        display: flex;
+    .player-tools {
+      display: flex;
     }
+  }
+
+@media (max-width:780px) {
+  .player-tools{
+    display: none;
+  }
+
+  .player-timeline {
+    width: 50vw;
+    max-width: 500px;
+  }
+
+  .player-controls{
+    margin-right: 80px;
+  }
+}
+  
+
+@media (max-width: 720px) {
+  .song-details{
+    display: none;
+  }
+
+  .player-controls{
+      margin-right: 100px;
+  }
+
+  .player-timeline {
+    width: 55vw;
+    max-width: 500px;
+  }
+
+  .player-tools{
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+
+  .player-controls{
+    margin-right: 70px;
+  }
+
 }

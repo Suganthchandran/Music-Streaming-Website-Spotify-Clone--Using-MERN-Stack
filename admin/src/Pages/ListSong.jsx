@@ -51,32 +51,38 @@ const ListSong = () => {
   return (
     <>
       <p>All Song List</p>
-      <div className='disp-album-body'>
-        <p>ID</p>
-        <p>Image</p>
-        <p>Name</p>
-        <p>Album</p>
-        <p>Artist</p>
-        <p>Duration</p>
-        <p>Action</p>
-      </div>
+      <table>
+      <thead className='disp-album-body'>
+        <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Source</th>
+        <th>Artist</th>
+        <th>Duration</th>
+        <th colSpan={2}>Action</th>
+        </tr>
+      </thead>
       <hr />
       {
         data.map((item, index) => (
-          <div key={index} className='disp-album-data'>
-            <b style={{ color: '#a7a7a7' }}>{index + 1}</b>
-            <img style={{width:'32%'}} src={item.image} alt='' />
-            <p>{item.name}</p>
-            <p>{item.album}</p>
-            <p>{item.artist}</p>
-            <p>{item.duration}</p>
-            <div className='disp-album-action'>
+          <tbody key={index} className='disp-album-data'>
+            <tr>
+            <td><b style={{ color: '#a7a7a7' }}>{index + 1}</b></td>
+            <td><img style={{width:'2.7rem'}} src={item.image} alt='' /></td>
+            <td><p>{item.name}</p></td>
+            <td><p>{item.desc}</p></td>
+            <td><p>{item.artist}</p></td>
+            <td><p>{item.duration}</p></td>
+            <td><div className='disp-album-action'>
             <MdDelete onClick={()=>removeSongs(item._id)} className='icon' />
             <MdEdit onClick={()=>navigate(`/update/${item._id}`)} className='icon' />
-            </div>
-          </div>
+            </div></td>
+            </tr>
+          </tbody>
         ))
       }
+      </table>
     </>
   )
 }

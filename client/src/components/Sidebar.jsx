@@ -9,6 +9,12 @@ export const Sidebar = () => {
 
   return (
     <div className='sidebar'>
+        <div className='mini-sidebar'>
+            <img className='sidebar-image1' src={assets.home_icon} alt=''/>
+            <img className='sidebar-image1' src={assets.search_icon} alt=''/>
+            <img className='sidebar-image2' src={assets.stack_icon} alt=''/>
+        </div>
+        <div className='big-sidebar'>
         <div className='sidebar-element1'>
             <div onClick={()=>navigate('/')} className='sidebar-content1'>
                 <img className='sidebar-image1' src={assets.home_icon} alt=''/>
@@ -40,6 +46,7 @@ export const Sidebar = () => {
                 <p className='sidebar-playlist-p'>We will keep you update on new episodes</p>
                 <button className='sidebar-playlist-butt'>Browse podcasts</button>
             </div>
+        </div>
         </div>
     </div>
   )
