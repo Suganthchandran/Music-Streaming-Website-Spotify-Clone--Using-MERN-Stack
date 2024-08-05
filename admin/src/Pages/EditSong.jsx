@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { assets } from '../assets/assets';
-import '../Styles/AddSong.css';
+import '../Styles/EditSong.css';
 import axios from 'axios';
 import { url } from './Display';
 import { toast } from 'react-toastify';
@@ -59,7 +59,7 @@ const EditSong = () => {
                 formData.append('audio', song);
             }
 
-            const response = await axios.put(`${url}/api/song/update/${id}`, formData);
+            const response = await axios.put(`${url}/api/song/updatesong/${id}`, formData);
 
             if (response.data.success) {
                 toast.success("Song Updated");

@@ -76,7 +76,7 @@ const ListSong = () => {
             <td><p>{item.duration}</p></td>
             <td><div className='disp-album-action'>
             <MdDelete onClick={()=>removeSongs(item._id)} className='icon' />
-            <MdEdit onClick={()=>navigate(`/update/${item._id}`)} className='icon' />
+            <MdEdit onClick={()=>navigate(`/updatesong/${item._id}`)} className='icon' />
             </div></td>
             </tr>
           </tbody>

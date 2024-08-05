@@ -13,7 +13,7 @@ const ListAlbum = () => {
 
   const [data, setData] = useState([]);
 
-  const fetchSongs = async () => {
+  const fetchAlbums = async () => {
     try {
       const response = await axios.get(`${url}/api/album/list`);
 
@@ -27,14 +27,14 @@ const ListAlbum = () => {
     }
   }
 
-  const removeSongs = async (id)=>{
+  const removeAlbums = async (id)=>{
     try{
       const response = await axios.post(`${url}/api/album/delete`,{id});
 
       if(response.data.success)
       {
         toast.success(response.data.message);
-        await fetchSongs();
+        await fetchAlbums();
       }
 
     }
@@ -45,37 +45,40 @@ const ListAlbum = () => {
   }
 
   useEffect(() => {
-    fetchSongs();
+    fetchAlbums();
   }, [])
 
   return (
     <>
       <p>All Album List</p>
-      <div className='disp-album-body-albums'>
-        <p>ID</p>
-        <p>Image</p>
-        <p>Name</p>
-        <p>Description</p>
-        <p>Color</p>
-        <p>Action</p>
-      </div>
+      <table>
+      <thead className='disp-album-body-albums'>
+        <th><p>ID</p></th>
+        <th><p>Image</p></th>
+        <th><p>Name</p></th>
+        <th><p>Description</p></th>
+        <th><p>Color</p></th>
+        <th colSpan={2}><p>Action</p></th>
+      </thead>
       <hr />
       {
         data.map((item, index) => (
-          <div key={index} className='disp-album-data-albums'>
-            <b style={{ color: '#a7a7a7' }}>{index + 1}</b>
-            <img style={{width:'32%'}} src={item.image} alt='' />
-            <p>{item.name}</p>
-            <p>{item.desc}</p>
-            {/* <p>{item.bgColor}</p> */}
-            <input type='color' value={item.bgColor} />
-            <div className='disp-album-action-albums'>
-            <MdDelete onClick={()=>removeSongs(item._id)} className='icon' />
-            <MdEdit onClick={()=>navigate('/edit-songs')} className='icon' />
-            </div>
-          </div>
+          <tbody key={index} className='disp-album-data-albums'>
+            <tr>
+            <td><b style={{ color: '#a7a7a7' }}>{index + 1}</b></td>
+            <td><img style={{width:'2.7rem'}} src={item.image} alt='' /></td>
+            <td><p>{item.name}</p></td>
+            <td><p>{item.desc}</p></td>
+            <td><input type='color' value={item.bgColor} /></td>
+            <td><div className='disp-album-action-albums'>
+            <MdDelete onClick={()=>removeAlbums(item._id)} className='icon' />
+            <MdEdit onClick={()=>navigate(`/updatealbum/${item._id}`)} className='icon' />
+            </div></td>
+            </tr>
+          </tbody>
         ))
       }
+      </table>
     </>
   )
 }

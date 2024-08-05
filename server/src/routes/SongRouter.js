@@ -8,6 +8,6 @@ songRouter.post('/add', upload.fields([{ name: 'image', maxCount: 1 }, { name: '
 songRouter.get('/list',listSong);
 songRouter.post('/delete',removeSong);
 songRouter.get('/findsong/:id',findByIdSong);
-songRouter.put('/update/:id',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'audio', maxCount: 1 }]),updateSong);
+songRouter.put('/updatesong/:id',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'audio', maxCount: 1 }]),updateSong);
 
 export default songRouter;

@@ -7,6 +7,7 @@ import ListSong from './ListSong'
 import ListAlbum from './ListAlbum'
 import { ToastContainer } from 'react-toastify';
 import EditSong from './EditSong';
+import EditAlbum from './EditAlbum';
 
 export const url="http://localhost:4000";
 
@@ -19,7 +20,8 @@ const Display = () => {
         <Route path='/add-albums' element={<AddAlbum/>} />
         <Route path='/list-songs' element={<ListSong/>} />
         <Route path='/list-albums' element={<ListAlbum/>} />
-        <Route path='/update/:id' element={<EditSong/>} />
+        <Route path='/updatesong/:id' element={<EditSong/>} />
+        <Route path='/updatealbum/:id' element={<EditAlbum/>}/>
       </Routes>
     </div>
   )
