@@ -4,7 +4,7 @@ import axios from 'axios';
 export const PlayerContext = createContext();
 
 const PlayerContextProvider = (props) => {
-    const url = 'https://music-streaming-website.onrender.com/';
+    const url = 'https://music-streaming-website.onrender.com';
 
     const [songsData, setSongsData] = useState([]);
     const [albumsData, setAlbumsData] = useState([]);
