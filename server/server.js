@@ -15,7 +15,7 @@ connectCloudinary();
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://music-streaming-website-spotify-clone.onrender.com/', // Your frontend URL
+    origin: 'https://music-streaming-website-spotify-clone.onrender.com', // Your frontend URL
   }));
 
 const __filename = fileURLToPath(import.meta.url);
