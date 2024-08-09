@@ -12,8 +12,14 @@ connectDB();
 connectCloudinary();
 
 app.use(express.json());
+
+const allowedOrigins = [
+  'https://music-streaming-website-spotify-clone.onrender.com',
+  'http://localhost:3000',
+  'http://localhost:3001'
+];
 app.use(cors({
-    origin: 'https://music-streaming-website-spotify-clone.onrender.com', // Your frontend URL without trailing slash
+    origin: allowedOrigins, // Your frontend URL without trailing slash
   }));
   
 
