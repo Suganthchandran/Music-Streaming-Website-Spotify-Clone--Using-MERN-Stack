@@ -9,6 +9,12 @@
     font-size: 0.7rem;
 }
 
+.disp-album-play{
+    display: flex;
+    flex-direction: row;
+    gap: 6rem
+}
+
 .disp-album-image {
     width: 8rem;
     height: 8rem;
@@ -174,4 +180,8 @@ table{
         width: 8rem;
         height: 8rem;
     }
+}
+
+.disp-album-data-container:hover {
+    background-color: red;
 }

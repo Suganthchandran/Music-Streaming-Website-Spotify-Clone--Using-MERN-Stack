@@ -19,7 +19,7 @@ const allowedOrigins = [
   'http://localhost:3001'
 ];
 app.use(cors({
-    origin: allowedOrigins, // Your frontend URL without trailing slash
+    origin: allowedOrigins,
   }));
   
 

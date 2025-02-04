@@ -2,6 +2,7 @@ import React from 'react'
 import {useNavigate} from 'react-router-dom'
 import '../styles/Navbar.css'
 import {assets} from '../assets/frontend-assets/assets'
+import { SignedIn, SignInButton, UserButton } from '@clerk/clerk-react'
 
 export const Navbar = () => {
 
@@ -14,10 +15,13 @@ export const Navbar = () => {
                 <img onClick={()=>navigate(-1)} className='navbar-arrow-image' src={assets.arrow_left} alt=''/>
                 <img onClick={()=>navigate(1)} className='navbar-arrow-image' src={assets.arrow_right} alt=''/>
             </div>
-            <div className='navbar-content'>
+            <div className='navbar-cotent'>
                 <button className='navbar-premium-butt'>Explore Premium</button>
-                <button className='navbar-install-app'>Install App</button>
-                <button className='navbar-profile'>S</button>
+                <button className='navbar-pofile'>
+                  <SignedIn>
+                      <UserButton/>
+                  </SignedIn>
+                </button>
             </div>
         </div>
         <div className='navbar-type'>

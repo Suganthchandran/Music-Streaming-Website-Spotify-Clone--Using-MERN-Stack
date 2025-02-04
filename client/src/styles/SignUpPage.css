@@ -1,0 +1,17 @@
+.signup {
+    background-color: black !important;
+    min-height: 100vh; /* Ensures it covers the entire viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .signup-container {
+    background-color: black !important;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+
+.cl-rootBox {
+    background-color: black;
+}

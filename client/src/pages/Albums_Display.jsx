@@ -47,7 +47,7 @@ export const Albums_Display = ({album}) => {
       {/* <hr /> */}
       {
         songsData.filter((item)=>(item.album == album.name)).map((item, index) => (
-          <tbody onClick={() => playWithId(item._id)} key={index} className='disp-album-data'>
+             <tbody onClick={() => playWithId(item._id)} key={index} className='disp-album-data'>
             <tr>
               <th><b style={{ marginRight: '1rem', color: '#a7a7a7' }}>{index + 1}</b></th>
               <th><img className='disp-album-data-image' src={item.image} alt='' /></th>
