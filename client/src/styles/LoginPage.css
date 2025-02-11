@@ -1,0 +1,38 @@
+.login {
+    background-color: #1ED760 !important;
+    min-height: 100vh;
+    width:100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cl-main {
+    gap:1rem;
+}
+
+.cl-formFieldAction {
+    color: rgb(197, 197, 197);
+}
+
+.cl-formFieldAction:hover {
+    color: rgb(255, 255, 255);
+}
+
+.cl-internal-9kuk9w {
+    color: rgb(114, 114, 114) !important;
+    padding: 0 0.7rem;
+}
+
+.cl-input {
+    background-color: white;
+    color: black;
+}
+
+.cl-formResendCodeLink {
+    color: rgb(151, 151, 151);
+}
+
+.cl-backLink {
+    color: white;
+}

@@ -1,17 +1,70 @@
 .signup {
-    background-color: black !important;
-    min-height: 100vh; /* Ensures it covers the entire viewport */
+    background-color: #1ED760 !important;
+    min-height: 100vh;
+    width:100%; 
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .signup-container {
-    background-color: black !important;
     padding: 20px;
     border-radius: 10px;
   }
   
+  .cl-internal-1dauvpw {
+    display: none;
+  }
+
+  .cl-internal-1p733cp {
+    background-color: black !important;
+  }
+
+  .cl-internal-1vbkfwh {
+    display: none;
+  }
+
+  .cl-internal-qo3qk7 {
+    gap:0.1rem;
+  }
+
+  .cl-internal-4x6jej {
+    background: black !important;
+  }
+
+  .cl-internal-1tpvhd8 {
+    color: white;
+  }
+
+  .cl-formFieldLabel {
+    color: white;
+  }
+
+  .cl-internal-9kuk9w {
+    color: white;
+  }
+
+  .cl-internal-1vmcfp6 {
+    color: white;
+  }
+
+  .cl-internal-167tq3k {
+    background-color: white;
+    color: black;
+  }
+
+  .cl-selectButtonIcon {
+    color: white;
+  }
 
 .cl-rootBox {
-    background-color: black;
+  border-radius: 5rem;
+}
+
+.cl-socialButtonsProviderIcon {
+  border: 2px solid black;
+  border-radius: 9999px;
+}
+
+.cl-footerActionLink {
+  color: white;
 }

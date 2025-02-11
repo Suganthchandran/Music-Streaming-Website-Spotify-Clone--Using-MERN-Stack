@@ -9,6 +9,7 @@ export const Player = ({ toggleFullscreen }) => {
   const [isDragging, setIsDragging] = useState(false);
   const volumeRef = useRef(null);
 
+  
   const handleVolumeChange = (e) => {
     if (volumeRef.current) {
       const rect = volumeRef.current.getBoundingClientRect();
@@ -17,22 +18,22 @@ export const Player = ({ toggleFullscreen }) => {
       adjustVolume(newVolume);
     }
   };
-
+  
   const handleMouseDown = (e) => {
     setIsDragging(true);
     handleVolumeChange(e);
   };
-
+  
   const handleMouseUp = () => {
     setIsDragging(false);
   };
-
+  
   const handleMouseMove = (e) => {
     if (isDragging) {
       handleVolumeChange(e);
     }
   };
-
+  
   useEffect(() => {
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
@@ -47,6 +48,11 @@ export const Player = ({ toggleFullscreen }) => {
       document.removeEventListener('mouseup', handleMouseUp);
     };
   }, [isDragging]);
+
+  useEffect(() => {
+    console.log("Updated Total Time:", time?.totalTime);
+  }, [time.totalTime]);
+  
 
   return track ? (
     <div className='player'>
@@ -84,7 +90,14 @@ export const Player = ({ toggleFullscreen }) => {
           <div ref={seekBg} onClick={seekSong} className='player-timeline'>
             <div ref={seekBar} className='player-line'></div>
           </div>
-          <p style={{ fontSize: '0.7rem' }}>{time.totalTime.minute}:{time.totalTime.second}</p>
+          {time?.totalTime && (
+  <p style={{ fontSize: '0.7rem' }}>
+    {time.totalTime.minute}:{time.totalTime.second}
+    
+  </p>
+)}
+
+
         </div>
       </div>
       <div className='player-tools'>

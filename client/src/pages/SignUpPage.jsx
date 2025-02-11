@@ -6,16 +6,15 @@ const SignUpPage = () => {
   return (
     <div className='signup'>
       <div className="signup-container">
-      <SignUp 
-  redirectUrl="/login" 
-  signInUrl="/login"
-  appearance={{
-    elements: {
-      rootBox: { backgroundColor: "black" }
-    }
-  }}
-/>
-
+        <SignUp
+          redirectUrl="/login"
+          signInUrl="/login"
+          appearance={{
+            elements: {
+              rootBox: { backgroundColor: "black" }
+            }
+          }}
+        />
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 html, body, #root {
     height: 100%;
     margin: 0;
-    background-color: black;
+    font-family: 'Circular';
   }
   
   .App {
-    background-color: black;
+    background: black;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -16,4 +16,6 @@ html, body, #root {
     display: flex;
     font-family: sans-serif;
   }
+
+
   

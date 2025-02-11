@@ -39,7 +39,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <>
       <SignedIn>
       <div className={`App ${isFullscreen ? 'fullscreen' : ''}`}>
         {songsData.length !== 0
@@ -62,7 +62,7 @@ function App() {
               <Route path="*" element={<LoginPage/>} />
           </Routes>
       </SignedOut>
-    </div>
+    </>
   );
 }
 

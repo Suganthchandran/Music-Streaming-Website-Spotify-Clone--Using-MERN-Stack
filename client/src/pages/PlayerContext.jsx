@@ -27,6 +27,11 @@ const PlayerContextProvider = (props) => {
     });
 
     useEffect(() => {
+        console.log("AudioRef on mount:", audioRef.current);
+    }, []);
+    
+
+    useEffect(() => {
         const getSongsData = async () => {
             try {
                 const response = await axios.get(`${url}/api/song/list`);
@@ -36,8 +41,12 @@ const PlayerContextProvider = (props) => {
                 setOriginalPlaybackOrder(songs.map(song => song._id));
                 setPlaybackOrder(songs.map(song => song._id));
                 setTrack(songs[0]);
+    
                 if (audioRef.current && songs[0]) {
                     audioRef.current.src = songs[0].url;
+                    
+                    console.log("Setting src:", songs[0].url);
+                    
                     audioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
                 }
             } catch (error) {
@@ -64,17 +73,33 @@ const PlayerContextProvider = (props) => {
         };
     }, []);
 
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.load();
+        }
+    }, [track]);
+    
+
     const handleLoadedMetadata = () => {
-        if (audioRef.current && !isNaN(audioRef.current.duration)) {
-            setTime(prev => ({
-                ...prev,
-                totalTime: {
-                    minute: Math.floor(audioRef.current.duration / 60),
-                    second: Math.floor(audioRef.current.duration % 60)
-                }
-            }));
+        if (audioRef.current) {
+            console.log("Metadata loaded!");
+            console.log("Audio duration:", audioRef.current.duration);
+            
+            if (!isNaN(audioRef.current.duration)) {
+                setTime(prev => ({
+                    ...prev,
+                    totalTime: {
+                        minute: Math.floor(audioRef.current.duration / 60),
+                        second: Math.floor(audioRef.current.duration % 60)
+                    }
+                }));
+            } else {
+                console.log("Duration is NaN");
+            }
         }
     };
+    
+    
 
     const play = () => {
         if (audioRef.current && track) {
