@@ -5,6 +5,7 @@ import '../styles/Display.css'
 import { Albums_Display } from './Albums_Display'
 import { albumsData } from '../assets/frontend-assets/assets'
 import { PlayerContext } from './PlayerContext'
+import Search from './Search'
 
 export const Display = () => {
 
@@ -30,6 +31,7 @@ export const Display = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/albums/:id' element={<Albums_Display album={albumsData.find((x) => (x._id == AlbumId))} />} />
+          <Route path='/search' element={<Search/>} />
         </Routes>
         : null
       }

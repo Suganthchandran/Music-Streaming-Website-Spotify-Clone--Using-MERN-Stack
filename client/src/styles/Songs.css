@@ -11,10 +11,13 @@
     background-color: #ffffff26;
 }
 
-.song-image{
+.song-image {
     border-radius: 4px;
     width: 110px;
+    height: 110px; /* Ensures all images have the same height */
+    object-fit: cover; /* Ensures images fill the box without distortion */
 }
+
 
 .song-name{
     margin-top: 0.5rem;

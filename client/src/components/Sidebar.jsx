@@ -7,6 +7,10 @@ export const Sidebar = () => {
 
     const navigate = useNavigate();
 
+    const handleSearch = () => {
+        navigate('/search');
+    }
+
   return (
     <div className='sidebar'>
         <div className='mini-sidebar'>
@@ -22,7 +26,7 @@ export const Sidebar = () => {
             </div>
             <div className='sidebar-content1'>
                 <img className='sidebar-image1' src={assets.search_icon} alt=''/>
-                <h1 className='sidebar-text1'>Search</h1>
+                <h1 className='sidebar-text1' onClick={handleSearch}>Search</h1>
             </div>
         </div>
         <div className='sidebar-element2'>
