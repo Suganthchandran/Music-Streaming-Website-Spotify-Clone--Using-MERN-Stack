@@ -15,9 +15,9 @@ export const Navbar = () => {
                 <img onClick={()=>navigate(-1)} className='navbar-arrow-image' src={assets.arrow_left} alt=''/>
                 <img onClick={()=>navigate(1)} className='navbar-arrow-image' src={assets.arrow_right} alt=''/>
             </div>
-            <div className='navbar-cotent'>
+            <div className='navbar-content'>
                 <button className='navbar-premium-butt'>Explore Premium</button>
-                <button className='navbar-pofile'>
+                <button className='navbar-profile'>
                   <SignedIn>
                       <UserButton/>
                   </SignedIn>

@@ -5,6 +5,9 @@
     border-radius: 4px;
     margin-right: 0.7rem;
     border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .song-main:hover{
@@ -14,8 +17,8 @@
 .song-image {
     border-radius: 4px;
     width: 110px;
-    height: 110px; /* Ensures all images have the same height */
-    object-fit: cover; /* Ensures images fill the box without distortion */
+    height: 110px;
+    object-fit: cover;
 }
 
 

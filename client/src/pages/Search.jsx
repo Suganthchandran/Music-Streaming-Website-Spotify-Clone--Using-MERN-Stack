@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react'
 import '../styles/Search.css'
 import { PlayerContext } from './PlayerContext'
 import { Songs } from '../components/Songs';
+import { FaSearchengin } from "react-icons/fa6";
 
 const Search = () => {
 
@@ -24,6 +25,9 @@ const Search = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
           className="search-input"
         />
+        <div className='search-bar-icon'>
+        <FaSearchengin />
+        </div>
       </div>
 
       {/* Song List */}
