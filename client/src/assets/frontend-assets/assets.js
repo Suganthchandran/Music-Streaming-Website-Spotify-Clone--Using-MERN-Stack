@@ -25,6 +25,7 @@ import spotify_logo from './vibey_logo.png'
 import clock_icon from './clock_icon.png'
 import loop_on_icon from './loop_on.png' 
 import shuffle_on_icon from './shuffle_on.png'
+import cat from './cat.png'
 // // --SONGS-COVER-IMAGES--
 // import blue_bird from './Songs/Blue Bird.jpg'
 // import guren_no_yumiya from './Songs/Guren no Yumiya.jpeg'
@@ -50,6 +51,7 @@ import shuffle_on_icon from './shuffle_on.png'
 
 export const assets = {
     logo,
+    cat,
     bell_icon,
     home_icon,
     like_icon,

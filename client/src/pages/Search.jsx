@@ -3,6 +3,7 @@ import '../styles/Search.css'
 import { PlayerContext } from './PlayerContext'
 import { Songs } from '../components/Songs';
 import { FaSearchengin } from "react-icons/fa6";
+import { assets } from '../assets/frontend-assets/assets';
 
 const Search = () => {
 
@@ -16,7 +17,6 @@ const Search = () => {
 
   return (
     <div className="search-page">
-      {/* Search Bar */}
       <div className="search-bar">
         <input
           type="text"
@@ -30,14 +30,16 @@ const Search = () => {
         </div>
       </div>
 
-      {/* Song List */}
       <div className="song-list">
         {filteredSongs.length > 0 ? (
           filteredSongs.map((item,index) => (
             <Songs key={index} image={item.image} name={item.name} desc={item.desc} id={item._id} />
           ))
         ) : (
-          <p className="no-results">No songs found.</p>
+          <div className='no-search-main'>
+              <p className='no-search-text'>This Song is not available</p>
+              <img className='no-search-img' src={assets.cat} />
+          </div>
         )}
       </div>
     </div>
