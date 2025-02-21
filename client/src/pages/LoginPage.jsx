@@ -6,7 +6,8 @@ const LoginPage = () => {
   return (
     <div className='login'>
       <div className="login-container">
-        <SignIn redirectUrl="http://localhost:3000/" signUpUrl="/sign-up"  />
+        {/* <SignIn redirectUrl="http://localhost:3000/" signUpUrl="/sign-up"  /> */}
+        <SignIn redirectUrl="https://vibey-rouge.vercel.app/" signUpUrl="/sign-up"  />
         </div>
     </div>
   )
