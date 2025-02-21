@@ -4,7 +4,7 @@ import axios from 'axios';
 export const PlayerContext = createContext();
 
 const PlayerContextProvider = (props) => {
-    const url = 'https://vibey-backend.vercel.app/';
+    const url = 'https://vibey-backend.vercel.app';
 
     const [songsData, setSongsData] = useState([]);
     const [albumsData, setAlbumsData] = useState([]);

@@ -15,7 +15,7 @@ app.use(express.json());
 
 const allowedOrigins = [
   'https://music-streaming-website-spotify-clone.onrender.com',
-  'https://vibey-music.vercel.app/',
+  'https://vibey-music.vercel.app',
   'http://localhost:3000',
   'http://localhost:3001'
 ];
